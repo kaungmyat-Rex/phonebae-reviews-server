@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get("/api/upload", async (req, res) => {
+app.get("/getreviews", async (req, res) => {
   const posts = await Post.find();
   res.json(posts);
 });
@@ -31,7 +31,7 @@ app.get("/api/upload", async (req, res) => {
 
 // const upload = multer({ storage: storage });
 // upload.single("image"),
-app.post("/api/upload", async (req, res) => {
+app.post("/upload", async (req, res) => {
   console.log(req.file);
   const post = new Post({
     name: req.body.name,

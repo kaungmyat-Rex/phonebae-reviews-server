@@ -9,11 +9,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const multer = require("multer");
 const path = require("path");
-app.use(
-  cors({
-    origin: "https://phonebae-reviews.netlify.app",
-  })
-);
+app.use(cors());
 app.use("/Images", express.static(path.join(__dirname, "Images")));
 app.use(express.json());
 

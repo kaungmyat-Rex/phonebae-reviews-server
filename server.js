@@ -10,7 +10,7 @@ const bodyParser = require("body-parser");
 const multer = require("multer");
 const path = require("path");
 app.use(cors());
-app.use("/Images", express.static(path.join(__dirname, "Images")));
+// app.use("/Images", express.static(path.join(__dirname, "Images")));
 app.use(express.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,18 +20,18 @@ app.get("/api/upload", async (req, res) => {
   res.json(posts);
 });
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "Images");
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + file.originalname);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "Images");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + file.originalname);
+//   },
+// });
 
-const upload = multer({ storage: storage });
-
-app.post("/api/upload", upload.single("image"), async (req, res) => {
+// const upload = multer({ storage: storage });
+// upload.single("image"),
+app.post("/api/upload", async (req, res) => {
   console.log(req.file);
   const post = new Post({
     name: req.body.name,

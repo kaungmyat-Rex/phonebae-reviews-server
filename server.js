@@ -50,13 +50,13 @@ app.post("/upload", async (req, res) => {
   });
 });
 
-app.delete("/api/upload/:id", async (req, res) => {
+app.delete("/getreviews/:id", async (req, res) => {
   const postID = req.params.id;
   const postdelete = await Post.findByIdAndDelete(postID);
   res.send(postdelete);
 });
 
-app.patch("/api/upload/:id", async (req, res) => {
+app.patch("/getreviews/:id", async (req, res) => {
   const postID = req.params.id;
   const postUpdate = await Post.findByIdAndUpdate(postID, {
     name: req.body.name,
@@ -71,7 +71,7 @@ app.patch("/api/upload/:id", async (req, res) => {
   res.send(postUpdate);
 });
 
-app.get("/api/upload/:id", async (req, res) => {
+app.get("/getreviews/:id", async (req, res) => {
   const postID = req.params.id;
   const task = await Post.findById(postID);
 
